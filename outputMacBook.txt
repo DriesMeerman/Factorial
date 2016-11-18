@@ -1,0 +1,30 @@
+CPU I7-4770HQ
+
+Start: Fri Nov 18 22:27:51 CET 2016
+Start fact thread with 1000000
+
+startval=1000000
+Result length=5565709
+
+109879442148 Nano seconds.
+
+109879442 Micro seconds
+109879 Milli seconds
+109 Seconds
+
+-------------------
+
+////////////////
+//Start normal
+////////////////
+
+
+432560222694 Nano seconds.
+
+432560222 Micro seconds
+432560 Milli seconds
+432 Seconds
+Result length=5565709
+Comparing results if 0 its the same 0
+
+Process finished with exit code 0
