@@ -26,7 +26,7 @@ public class Main {
 
                 int starts = startNumber.intValue();
                 System.out.println("startval="+starts);
-                result     = threadedFactorial(starts, 20);
+                result     = threadedFactorial(starts, 40);
                 long end   = System.nanoTime();
 //                System.out.println("Threaded result ="+result); //Commented line because result output is too huge.
                 System.out.println("Result length=" + getDigitCount(result));
@@ -49,17 +49,6 @@ public class Main {
         System.out.println("Comparing results if 0 its the same "+ monoResult.compareTo(result));
     }
 
-    public static void ayy(){
-        while (true) {
-            System.out.println("memes");
-
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
     /**
      * @author Dries Meerman
@@ -87,15 +76,11 @@ public class Main {
         for (int i = 0; i < threadCount; i++){
             final BigInteger chunkStart = factor.subtract(multiplier.multiply(BigInteger.valueOf((long)i)));
 
-            es.execute(() -> {
-                result.getAndUpdate(bigInteger -> bigInteger.multiply(threadedFactPart(chunkStart, multiplier)));
-            });
+            es.execute(() -> result.getAndUpdate(bigInteger -> bigInteger.multiply(threadedFactPart(chunkStart, multiplier))));
         }
 
         if (modulo.compareTo(BigInteger.ZERO) != 0) {
-            es.execute(() -> {
-                result.getAndUpdate(bigInteger -> bigInteger.multiply(threadedFactPart(modulo, modulo)));
-            });
+            es.execute(() -> result.getAndUpdate(bigInteger -> bigInteger.multiply(threadedFactPart(modulo, modulo))));
         }
 
         es.shutdown();
